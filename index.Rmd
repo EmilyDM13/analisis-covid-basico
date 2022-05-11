@@ -45,7 +45,6 @@ covid$FECHA <- as.Date(covid$FECHA, format = "%d/%m/%Y")
 #### Casos acumulados
 
 ##### Positivos
-
 ```{r casos-positivos-acumulados}
 plot(
   covid$FECHA,
@@ -101,6 +100,55 @@ axis(
   covid$fallecidos,
   labels = TRUE,  
   at = seq(0, 10000, by = 2000),
+  cex.axis = 0.7
+)
+```
+
+##### Otros
+```{r otros-graficos}
+plot(
+  covid$FECHA,
+  covid$positivos,
+  type = "l",
+  xaxt = "n",
+  yaxt = "n",
+  main = "Casos acumulados de COVID-19 en Costa Rica",
+  xlab = "Fecha",
+  ylab = "Casos",
+  col = "blue"
+)
+
+# Casos activos
+lines(covid$FECHA, covid$activos, col="red")
+
+# Casos fallecidos
+lines(covid$FECHA, covid$fallecidos, col="black")
+
+# Casos recuperados
+lines(covid$FECHA, covid$RECUPERADOS, col="green")
+
+# Leyenda
+legend(
+  x = "topleft",
+  inset = 0.03,
+  legend = c("Positivos", "Activos", "Fallecidos", "Recuperados"),
+  col = c("blue", "red", "black", "green"),
+  lty = 1,
+  cex = 0.7)
+
+# Formato del eje X
+axis(side = 1,
+     covid$FECHA,
+     tick = FALSE,
+     format(covid$FECHA, "%m-%y"),
+     cex.axis = 0.7)
+
+# Formato del eje Y
+axis(
+  side = 2,
+  covid$positivos,
+  labels = TRUE,  
+  at = seq(0, 1000000, by = 200000),
   cex.axis = 0.7
 )
 ```
