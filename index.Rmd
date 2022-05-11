@@ -1,0 +1,13 @@
+---
+title: "Análisis de datos de COVID-19 en Costa Rica - Gráficos del paquete base"
+author: "Emily Diaz"
+date: '2022-05-11'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Presentación
+Este documento presenta varios gráficos estadísticos de los datos de COVID-19 en Costa Rica publicados por el Ministerio de Salud en [https://geovision.uned.ac.cr/oges/](https://geovision.uned.ac.cr/oges/)
