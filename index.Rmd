@@ -237,6 +237,50 @@ axis(
   lwd = 0)
 ```
 
+```{r hospitalizados-salon-uci}
+plot(
+  covid$FECHA,
+  covid$nue_hospi,
+  type = "l",
+  xaxt = "n",
+  yaxt = "n",
+  main = "Casos por día en salón y en UCI de COVID-19 en Costa Rica",
+  xlab = "Fecha",
+  ylab = "Casos",
+  col = "blue"
+)
+
+# Casos en salón
+lines(covid$FECHA, covid$nue_salon, col="red")
+
+# Casos en UCI
+lines(covid$FECHA, covid$nue_UCI, col="black")
+
+# Leyenda
+legend(
+  x = "topleft",
+  inset = 0.03,
+  legend = c("Casos por día", "En salón", "En UCI"),
+  col = c("blue", "red", "black"),
+  lty = 1,
+  cex = 0.7)
+
+# Formato del eje X
+axis(side = 1,
+     covid$FECHA,
+     tick = FALSE,
+     format(covid$FECHA, "%m-%y"),
+     cex.axis = 0.7)
+
+# Formato del eje Y
+axis(
+  side = 2,
+  covid$nue_hospi,
+  labels = TRUE,  
+  at = seq(0, 400, by = 20),
+  cex.axis = 0.7
+)
+```
 
 
 
