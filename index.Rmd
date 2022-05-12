@@ -282,6 +282,54 @@ axis(
 )
 ```
 
+```{r casos-por-dia-activos}
+plot(
+  covid$FECHA,
+  covid$activos,
+  type = "l",
+  xaxt = "n",
+  yaxt = "n",
+  main = "Casos activos por día de COVID-19 en Costa Rica",
+  xlab = "Fecha",
+  ylab = "Casos",
+  col = "blue"
+)
+
+# Casos menores
+lines(covid$FECHA, covid$menor_acti, col="red")
+
+# Casos adultos
+lines(covid$FECHA, covid$adul_acti, col="black")
+
+# Casos adultos mayores
+lines(covid$FECHA, covid$am_acti, col="green")
+
+# Leyenda
+legend(
+  x = "topleft",
+  inset = 0.03,
+  legend = c("Activos", "Menores", "Adultos", "Adultos Mayores"),
+  col = c("blue", "red", "black", "green"),
+  lty = 1,
+  cex = 0.7)
+
+# Formato del eje X
+axis(side = 1,
+     covid$FECHA,
+     tick = FALSE,
+     format(covid$FECHA, "%m-%y"),
+     cex.axis = 0.7)
+
+# Formato del eje Y
+axis(
+  side = 2,
+  covid$activos,
+  labels = TRUE,  
+  at = seq(0, 2000000, by = 30000),
+  cex.axis = 0.7
+)
+```
+
 
 
 
